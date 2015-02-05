@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassInterfaceMethods</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>// 颜色十六进制转换为十进制
+- (NSString *)colorHexadecimalToDecimal:(NSString *)hexString
+{
+    NSString *result = @"";
+    NSString *tmpHex = [hexString stringByReplacingOccurrencesOfString:@"#" withString:@"0x"];
+    
+    uint hexValue;
+    if ([[NSScanner scannerWithString:tmpHex] scanHexInt:&amp;hexValue]) {
+        CGFloat red = (hexValue &amp; 0xFF0000) &gt;&gt; 16;
+        CGFloat green = (hexValue &amp; 0xFF00) &gt;&gt; 8;
+        CGFloat blue = hexValue &amp; 0xFF;
+        
+        result = [result stringByAppendingFormat:@"R:%.0f ", red];
+        result = [result stringByAppendingFormat:@"G:%.0f ", green];
+        result = [result stringByAppendingFormat:@"B:%.0f ", blue];
+    }
+    
+    return result;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>3D1B675F-DCDF-42AC-827F-4EB7944348F4</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>Als_colorHexadecimalToDecimal</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Als_colorHexadecimalToDecimal</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

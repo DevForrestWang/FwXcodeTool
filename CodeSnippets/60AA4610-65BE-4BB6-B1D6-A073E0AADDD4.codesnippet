@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>Als_caughtExceptionHandler</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassInterfaceMethods</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>// 添加崩溃调用栈打印
+NSSetUncaughtExceptionHandler(&amp;caughtExceptionHandler);
+
+void caughtExceptionHandler(NSException *exception) {
+    // 获取异常崩溃信息
+    NSArray *callStatck = [exception callStackSymbols];
+    NSString *reason = [exception reason];
+    NSString *name = [exception name];
+    NSString *exceptionInfo = [NSString stringWithFormat:@"========异常错误报告========\nname:%@\nreason:\n%@\ncallStackSymbols:\n%@",
+                               name,
+                               reason,
+                               [callStatck componentsJoinedByString:@"\n"]];
+    GODebugLog(@"%s, content:%@", __FUNCTION__, exceptionInfo);
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>60AA4610-65BE-4BB6-B1D6-A073E0AADDD4</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Als_caughtExceptionHandler</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
