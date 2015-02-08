@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>Als_attributeFont</string>
+	<string>fw_attributeFont</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>ClassInterfaceMethods</string>
+		<string>ClassImplementation</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
 	<string>- (NSMutableAttributedString *)attributeFont:(NSString *)allString
@@ -23,8 +23,10 @@
 	<string>384A182B-9849-4D10-9F41-25C18AE5E499</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>fw attributeFont</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Als_attributeFont</string>
+	<string>fw attributeFont</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

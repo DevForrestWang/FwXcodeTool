@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>als_label</string>
+	<string>fw_label</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>ClassInterfaceVariables</string>
+		<string>ClassImplementation</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
 	<string>UILabel *decLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 6, cellWidth, 21)];
@@ -20,8 +20,10 @@ decLabel.text = [contentDataArray objectAtIndex:index];</string>
 	<string>1466E170-7BF5-42F9-8C08-3B4399D57DDF</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>fw label</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Als_label</string>
+	<string>fw label</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

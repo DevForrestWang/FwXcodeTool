@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>Als_caughtExceptionHandler</string>
+	<string>fw_caughtExceptionHandler</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>ClassInterfaceMethods</string>
+		<string>ClassImplementation</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
 	<string>// 添加崩溃调用栈打印
@@ -29,8 +29,10 @@ void caughtExceptionHandler(NSException *exception) {
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
 	<key>IDECodeSnippetPlatformFamily</key>
 	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>fw caughtExceptionHandler</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Als_caughtExceptionHandler</string>
+	<string>fw caughtExceptionHandler</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
