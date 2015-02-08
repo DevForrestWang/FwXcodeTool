@@ -1,10 +1,10 @@
 #!/bin/sh
 
-#  MergeLanguageFiles.sh
+#  mergeLanguageFiles.sh
 #  golo
 #
-#  Created by launch05 on 13-12-18.
-#  Copyright (c) 2013年 LAUNCH. All rights reserved.
+#  Created by forrest on 14-12-18.
+#  Copyright (c) forrest 2013年. All rights reserved.
 
 language="zh-Hans ja"
 language_file="${SRCROOT}/golo/${language}.lproj/Localizable.strings"

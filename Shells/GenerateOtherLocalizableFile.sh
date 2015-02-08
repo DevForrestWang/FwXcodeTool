@@ -1,10 +1,10 @@
 #!/usr/bin/php
 
-#  GenerateOtherLocalizableFile.sh
+#  generateOtherLocalizableFile.sh
 #  golo
 #
-#  Created by launch05 on 14-1-21.
-#  Copyright (c) 2014年 LAUNCH. All rights reserved.
+#  Created by forrest on 14-1-21.
+#  Copyright (c) 2014年 forrest. All rights reserved.
 
 <?php
 

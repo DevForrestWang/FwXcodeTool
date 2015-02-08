@@ -61,6 +61,56 @@
 
 - (NSArray *) split:(NSString*) separator;
 
+// 颜色转换 "#029387"
+- (UIColor*)colorWithHexString:(NSString *)hexString andAlpha:(float)alpha;
+
+// 去除空格
+- (NSString *)stringByTrimming;
+
+#pragma mark - Time
+/**
+ *	@brief	时间戳转时间
+ *
+ *	@param 	timeStamp 	@"1410867094"
+ *
+ *	@return	time @"2014-09-16 19:31:34"
+ */
+- (NSString *)timeStampConvertTime:(NSString *)timeStamp;
+
+/**
+ *	@brief	当前时间转时间戳
+ *
+ *	@return	timeStamp 	@"1410867094"
+ */
+- (NSString *)currentTimeConvertTimeStamp;
+
+/**
+ *	@brief	时间转时间戳
+ *
+ *	@param 	time 	@"2014-09-16 19:31:34"
+ *
+ *	@return	timeStamp:@"1410867094"
+ */
+- (NSString *)timeConvertTimeStamp:(NSString *)time;
+
+/**
+ *  日期时间戳字符串转为其他格式日期字符串
+ *
+ *  @param format 日期格式
+ *
+ *  @return 设定格式的日期字符串
+ */
+- (NSString *)timeStampConvertToTimeFormat:(NSString *)format;
+
+/**
+ *  格式日期字符串转为日期时间戳字符串
+ *
+ *  @param format 日期格式
+ *
+ *  @return 时间戳字符串
+ */
+- (NSString *)timeFormatConvertToTimeStamp:(NSString *)format;
+
 @end
 
 

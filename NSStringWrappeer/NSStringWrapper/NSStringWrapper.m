@@ -153,5 +153,97 @@
     return [self componentsSeparatedByString:separator];
 }
 
+- (UIColor*)colorWithHexString:(NSString*)hexString andAlpha:(float)alpha {
+    UIColor *col;
+    hexString = [hexString stringByReplacingOccurrencesOfString:@"#"
+                                                     withString:@"0x"];
+    uint hexValue;
+    if ([[NSScanner scannerWithString:hexString] scanHexInt:&hexValue]) {
+        col = [self colorWithHexValue:hexValue andAlpha:alpha];
+    } else {
+        // invalid hex string
+        col = [UIColor blackColor];
+    }
+    return col;
+}
+
+- (UIColor*)colorWithHexValue:(uint)hexValue andAlpha:(float)alpha {
+    return [UIColor
+            colorWithRed:((float)((hexValue & 0xFF0000) >> 16))/255.0
+            green:((float)((hexValue & 0xFF00) >> 8))/255.0
+            blue:((float)(hexValue & 0xFF))/255.0
+            alpha:alpha];
+}
+
+#ifdef GNUSTEP
+- (NSString *)stringByTrimming
+{
+    return [self stringByTrimmingSpaces];
+}
+#else
+- (NSString *)stringByTrimming
+{
+    NSMutableString *mStr = [self mutableCopy];
+    CFStringTrimWhitespace((__bridge CFMutableStringRef)mStr);
+    
+    NSString *result = [mStr copy];
+    
+    return result;
+}
+#endif
+
+- (NSString *)timeStampConvertTime:(NSString *)timeStamp
+{
+    NSTimeInterval time = [timeStamp doubleValue];
+    NSDate *detaildate=[NSDate dateWithTimeIntervalSince1970:time];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    return [NSString stringWithFormat:@"%@",[dateFormatter stringFromDate: detaildate]];
+}
+
+- (NSString *)currentTimeConvertTimeStamp
+{
+    return  [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]];
+}
+
+- (NSString *)timeConvertTimeStamp:(NSString *)time
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate* date = [dateFormatter dateFromString:time];
+    if (date == nil) {
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+        date = [dateFormatter dateFromString:time];
+    }
+    if (date == nil) {
+        return time;
+    }
+    return  [NSString stringWithFormat:@"%f",[date timeIntervalSince1970]];
+}
+
+- (NSString *)timeStampConvertToTimeFormat:(NSString *)format
+{
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[self doubleValue]];
+    if (date == nil) {
+        NSLog(@"convert to format fail");
+        return self;
+    }
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:format];
+    return [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:date]];
+}
+
+- (NSString *)timeFormatConvertToTimeStamp:(NSString *)format
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:format];
+    
+    NSDate *date = [formatter dateFromString:self];
+    if (date == nil) {
+        NSLog(@"convert to timeStamp fail");
+        return self;
+    }
+    return [NSString stringWithFormat:@"%f", [date timeIntervalSince1970]];
+}
 
 @end
