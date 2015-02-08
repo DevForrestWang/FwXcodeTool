@@ -111,6 +111,71 @@
  */
 - (NSString *)timeFormatConvertToTimeStamp:(NSString *)format;
 
+// 字符转为千位符分隔格式
+- (NSString *)separateByDecimal;
+
++ (NSString *)md5:(NSString *)str;
+
+- (NSString *)md5;
+
++ (NSString *)base64StringFromText:(NSString *)text;
+
++ (NSString *)textFromBase64String:(NSString *)base64;
+
++ (NSString *)generateUDID;
+/**
+ *  去除字符串左右两端空格
+ *
+ *  @param string 输入字符串
+ *
+ *  @return 返回字符串
+ */
++ (NSString *)trimString:(NSString *)string;
+
++ (id)checkNull:(id)source;
+
++ (NSString *)stringWithDate:(NSDate *)date dateFormat:(NSString *)dateFormat;
+
+// 字符串编码
+- (NSString *)stringURLEncoding;
+
+/*
+ * 文字宽度 (1行, 最大宽度为预设CGFLOAT_MAX)
+ */
+- (CGFloat)widthWithFont:(UIFont *)font;
+
+/*
+ * 文字宽度 (1行, 最大宽度为maxWidth)
+ */
+- (CGFloat)widthWithFont:(UIFont *)font maxWidth:(CGFloat)maxWidth;
+
+/*
+ * 固定宽度的文字高度
+ */
+- (CGFloat)heightWithFixWidth:(CGFloat)width font:(UIFont *)font;
+
+/*
+ * 文字size (1行)
+ */
+- (CGSize)textSizeWithFont:(UIFont *)font;
+
+/*
+ * 文字size
+ */
+- (CGSize)textSizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size;
+
+
+/*
+ * 文字size
+ */
+- (CGSize)textDrawAtPoint:(CGPoint)point withFont:(UIFont *)font;
+
+- (CGSize)textDrawInRect:(CGRect)rect withFont:(UIFont *)font;
+
+- (CGSize)textDrawInRect:(CGRect)rect withFont:(UIFont *)font lineBreakMode:(NSLineBreakMode)lineBreakMode;
+
+- (CGSize)textDrawInRect:(CGRect)rect withFont:(UIFont *)font lineBreakMode:(NSLineBreakMode)lineBreakMode alignment:(NSTextAlignment)textAlignment;
+
 @end
 
 
