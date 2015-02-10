@@ -15,9 +15,9 @@
 		95EC17CB1A89F9210057422F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95EC17C91A89F9210057422F /* LaunchScreen.xib */; };
 		95EC17D71A89F9210057422F /* BaseSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC17D61A89F9210057422F /* BaseSampleTests.m */; };
 		95EC17E21A89F9E30057422F /* NSStringWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC17E11A89F9E30057422F /* NSStringWrapperTests.m */; };
-		95EC17F21A89F9F10057422F /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC17E61A89F9F10057422F /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		95EC17F21A89F9F10057422F /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC17E61A89F9F10057422F /* NSData+Base64.m */; };
 		95EC17F41A89F9F10057422F /* NSStringWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC17EE1A89F9F10057422F /* NSStringWrapper.m */; };
-		95EC17F61A89F9F10057422F /* TQImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC17F11A89F9F10057422F /* TQImageCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		95EC17F61A89F9F10057422F /* TQImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC17F11A89F9F10057422F /* TQImageCache.m */; };
 		95EC17F91A89FD340057422F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95EC17F81A89FD340057422F /* SenTestingKit.framework */; };
 		95EC17FB1A89FEFD0057422F /* NSStringWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC17EE1A89F9F10057422F /* NSStringWrapper.m */; };
 /* End PBXBuildFile section */
@@ -498,6 +498,7 @@
 				95EC17DC1A89F9210057422F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		95EC17DD1A89F9210057422F /* Build configuration list for PBXNativeTarget "BaseSampleTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +507,7 @@
 				95EC17DF1A89F9210057422F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

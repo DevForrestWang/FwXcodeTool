@@ -61,16 +61,16 @@ static BOOL debugMode = YES;
                 return nil;
             }
         }
-        self.memoryCache = [[[NSMutableDictionary alloc] initWithCapacity:maxMemoryCacheNumber] autorelease];
-        self.memoryCacheKeys = [[[NSMutableArray alloc] initWithCapacity:maxMemoryCacheNumber] autorelease];
+        self.memoryCache = [[NSMutableDictionary alloc] initWithCapacity:maxMemoryCacheNumber];
+        self.memoryCacheKeys = [[NSMutableArray alloc] initWithCapacity:maxMemoryCacheNumber];
         return self;
     }
     return self;
 }
 
 - (void)clear {
-    self.memoryCache = [[[NSMutableDictionary alloc] initWithCapacity:maxMemoryCacheNumber] autorelease];
-    self.memoryCacheKeys = [[[NSMutableArray alloc] initWithCapacity:maxMemoryCacheNumber] autorelease];
+    self.memoryCache = [[NSMutableDictionary alloc] initWithCapacity:maxMemoryCacheNumber];
+    self.memoryCacheKeys = [[NSMutableArray alloc] initWithCapacity:maxMemoryCacheNumber];
 
     // remove all the file in temporary
     NSArray * files = [self.fileManager contentsOfDirectoryAtPath:self.cachePath error:nil];
@@ -88,13 +88,12 @@ static BOOL debugMode = YES;
     if ([self.memoryCache count] > self.maxMemoryCacheNumber) {
         // Retain the `key` varible otherwise
         // it maybe dealloc after it is removed from memoryCahceKyes array
-        NSString * key = [[self.memoryCacheKeys objectAtIndex:0] retain];
+        NSString * key = [self.memoryCacheKeys objectAtIndex:0];
         [self.memoryCache removeObjectForKey:key];
         [self.memoryCacheKeys removeObjectAtIndex:0];
         if (debugMode) {
             debugLog(@"remove oldest cache from memory: %@", key);
         }
-        [key release];
     }
     NSString * path = [self.cachePath stringByAppendingPathComponent:imageName];
     [imageData writeToFile:path atomically:YES];
