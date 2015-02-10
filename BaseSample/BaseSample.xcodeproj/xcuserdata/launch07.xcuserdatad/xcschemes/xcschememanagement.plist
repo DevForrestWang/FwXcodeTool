@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>NSStringWrapper.xcscheme</key>
+		<key>BaseSample.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>45E8A50E14DCD5BB00D3FCA4</key>
+		<key>95EC17B61A89F9210057422F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>45E8A51E14DCD5BB00D3FCA4</key>
+		<key>95EC17CF1A89F9210057422F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

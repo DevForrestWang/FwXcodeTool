@@ -5,20 +5,20 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>2C36DCFE-70AF-46D7-ABE7-2C48B6E37028</string>
+	<string>64CCDFC5-69C9-493D-A826-5B773B209434</string>
 	<key>IDESourceControlProjectName</key>
-	<string>NSStringWrapper</string>
+	<string>BaseSample</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>8698A6A84AA596D2C1F938AEA5DB69090BD204F4</key>
-		<string>https://github.com/allison162004/FwXcodeTool.git</string>
+		<string>https://github.com/allison162004/xcode_tool.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>NSStringWrappeer/NSStringWrapper.xcodeproj</string>
+	<string>BaseSample/BaseSample.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>8698A6A84AA596D2C1F938AEA5DB69090BD204F4</key>
-		<string>../../..</string>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/allison162004/FwXcodeTool.git</string>
@@ -28,6 +28,14 @@
 	<string>8698A6A84AA596D2C1F938AEA5DB69090BD204F4</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8698A6A84AA596D2C1F938AEA5DB69090BD204F4</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

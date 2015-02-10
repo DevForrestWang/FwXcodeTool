@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "45E8A50E14DCD5BB00D3FCA4"
-               BuildableName = "libNSStringWrapper.a"
-               BlueprintName = "NSStringWrapper"
-               ReferencedContainer = "container:NSStringWrapper.xcodeproj">
+               BlueprintIdentifier = "95EC17B61A89F9210057422F"
+               BuildableName = "BaseSample.app"
+               BlueprintName = "BaseSample"
+               ReferencedContainer = "container:BaseSample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "45E8A51E14DCD5BB00D3FCA4"
-               BuildableName = "NSStringWrapperTests.octest"
-               BlueprintName = "NSStringWrapperTests"
-               ReferencedContainer = "container:NSStringWrapper.xcodeproj">
+               BlueprintIdentifier = "95EC17CF1A89F9210057422F"
+               BuildableName = "BaseSampleTests.xctest"
+               BlueprintName = "BaseSampleTests"
+               ReferencedContainer = "container:BaseSample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,20 +46,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "45E8A51E14DCD5BB00D3FCA4"
-               BuildableName = "NSStringWrapperTests.octest"
-               BlueprintName = "NSStringWrapperTests"
-               ReferencedContainer = "container:NSStringWrapper.xcodeproj">
+               BlueprintIdentifier = "95EC17CF1A89F9210057422F"
+               BuildableName = "BaseSampleTests.xctest"
+               BlueprintName = "BaseSampleTests"
+               ReferencedContainer = "container:BaseSample.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "45E8A50E14DCD5BB00D3FCA4"
-            BuildableName = "libNSStringWrapper.a"
-            BlueprintName = "NSStringWrapper"
-            ReferencedContainer = "container:NSStringWrapper.xcodeproj">
+            BlueprintIdentifier = "95EC17B61A89F9210057422F"
+            BuildableName = "BaseSample.app"
+            BlueprintName = "BaseSample"
+            ReferencedContainer = "container:BaseSample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -72,15 +72,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "45E8A50E14DCD5BB00D3FCA4"
-            BuildableName = "libNSStringWrapper.a"
-            BlueprintName = "NSStringWrapper"
-            ReferencedContainer = "container:NSStringWrapper.xcodeproj">
+            BlueprintIdentifier = "95EC17B61A89F9210057422F"
+            BuildableName = "BaseSample.app"
+            BlueprintName = "BaseSample"
+            ReferencedContainer = "container:BaseSample.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -90,15 +90,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "45E8A50E14DCD5BB00D3FCA4"
-            BuildableName = "libNSStringWrapper.a"
-            BlueprintName = "NSStringWrapper"
-            ReferencedContainer = "container:NSStringWrapper.xcodeproj">
+            BlueprintIdentifier = "95EC17B61A89F9210057422F"
+            BuildableName = "BaseSample.app"
+            BlueprintName = "BaseSample"
+            ReferencedContainer = "container:BaseSample.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

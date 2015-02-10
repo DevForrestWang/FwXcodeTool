@@ -26,12 +26,12 @@
  * a value less than 0 if this string is lexicographically less than the string argument;
  * and a value greater than 0 if this string is lexicographically greater than the string argument.
  */
-- (int) compareTo:(NSString*) anotherString {
+- (NSInteger) compareTo:(NSString*) anotherString {
     return [self compare:anotherString];
 }
 
 /** Java-like method. Compares two strings lexicographically, ignoring case differences. */
-- (int) compareToIgnoreCase:(NSString*) str {
+- (NSInteger) compareToIgnoreCase:(NSString*) str {
     return [self compare:str options:NSCaseInsensitiveSearch];
 }
 
@@ -57,11 +57,11 @@
     return [[self toLowerCase] equals:[anotherString toLowerCase]];
 }
 
-- (int) indexOfChar:(unichar)ch{
+- (NSInteger) indexOfChar:(unichar)ch{
     return [self indexOfChar:ch fromIndex:0];
 }
 
-- (int) indexOfChar:(unichar)ch fromIndex:(int)index{
+- (NSInteger) indexOfChar:(unichar)ch fromIndex:(int)index{
     int len = self.length;
     for (int i = index; i < len; ++i) {
         if (ch == [self charAt:i]) {
@@ -71,7 +71,7 @@
     return JavaNotFound;
 }
 
-- (int) indexOfString:(NSString*)str {
+- (NSInteger) indexOfString:(NSString*)str {
     NSRange range = [self rangeOfString:str];
     if (range.location == NSNotFound) {
         return JavaNotFound;
@@ -79,7 +79,7 @@
     return range.location;
 }
 
-- (int) indexOfString:(NSString*)str fromIndex:(int)index {
+- (NSInteger) indexOfString:(NSString*)str fromIndex:(int)index {
     NSRange fromRange = NSMakeRange(index, self.length - index);
     NSRange range = [self rangeOfString:str options:NSLiteralSearch range:fromRange];
     if (range.location == NSNotFound) {
@@ -88,7 +88,7 @@
     return range.location;
 }
 
-- (int) lastIndexOfChar:(unichar)ch {
+- (NSInteger) lastIndexOfChar:(unichar)ch {
     int len = self.length;
     for (int i = len-1; i >=0; --i) {
         if ([self charAt:i] == ch) {
@@ -98,7 +98,7 @@
     return JavaNotFound;
 }
 
-- (int) lastIndexOfChar:(unichar)ch fromIndex:(int)index {
+- (NSInteger) lastIndexOfChar:(unichar)ch fromIndex:(int)index {
     int len = self.length;
     if (index >= len) {
         index = len - 1;
@@ -111,7 +111,7 @@
     return JavaNotFound;
 }
 
-- (int) lastIndexOfString:(NSString*)str {
+- (NSInteger) lastIndexOfString:(NSString*)str {
     NSRange range = [self rangeOfString:str options:NSBackwardsSearch];
     if (range.location == NSNotFound) {
         return JavaNotFound;
@@ -119,7 +119,7 @@
     return range.location;
 }
 
-- (int) lastIndexOfString:(NSString*)str fromIndex:(int)index {
+- (NSInteger) lastIndexOfString:(NSString*)str fromIndex:(int)index {
     NSRange fromRange = NSMakeRange(0, index);
     NSRange range = [self rangeOfString:str options:NSBackwardsSearch range:fromRange];
     if (range.location == NSNotFound) {
@@ -156,28 +156,6 @@
     return [self componentsSeparatedByString:separator];
 }
 
-- (UIColor*)colorWithHexString:(NSString*)hexString andAlpha:(float)alpha {
-    UIColor *col;
-    hexString = [hexString stringByReplacingOccurrencesOfString:@"#"
-                                                     withString:@"0x"];
-    uint hexValue;
-    if ([[NSScanner scannerWithString:hexString] scanHexInt:&hexValue]) {
-        col = [self colorWithHexValue:hexValue andAlpha:alpha];
-    } else {
-        // invalid hex string
-        col = [UIColor blackColor];
-    }
-    return col;
-}
-
-- (UIColor*)colorWithHexValue:(uint)hexValue andAlpha:(float)alpha {
-    return [UIColor
-            colorWithRed:((float)((hexValue & 0xFF0000) >> 16))/255.0
-            green:((float)((hexValue & 0xFF00) >> 8))/255.0
-            blue:((float)(hexValue & 0xFF))/255.0
-            alpha:alpha];
-}
-
 #ifdef GNUSTEP
 - (NSString *)stringByTrimming
 {
@@ -195,58 +173,20 @@
 }
 #endif
 
-- (NSString *)timeStampConvertTime:(NSString *)timeStamp
++ (NSString *)trimString:(NSString *)string
 {
-    NSTimeInterval time = [timeStamp doubleValue];
-    NSDate *detaildate=[NSDate dateWithTimeIntervalSince1970:time];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    return [NSString stringWithFormat:@"%@",[dateFormatter stringFromDate: detaildate]];
+    string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    return string;
 }
 
-- (NSString *)currentTimeConvertTimeStamp
++ (id)checkNull:(id)source
 {
-    return  [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]];
-}
-
-- (NSString *)timeConvertTimeStamp:(NSString *)time
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate* date = [dateFormatter dateFromString:time];
-    if (date == nil) {
-        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-        date = [dateFormatter dateFromString:time];
+    NSString *result = @"";
+    if(!source || source == nil || [source isEqual:[NSNull null]]){
+        return result;
     }
-    if (date == nil) {
-        return time;
-    }
-    return  [NSString stringWithFormat:@"%f",[date timeIntervalSince1970]];
-}
-
-- (NSString *)timeStampConvertToTimeFormat:(NSString *)format
-{
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[self doubleValue]];
-    if (date == nil) {
-        NSLog(@"convert to format fail");
-        return self;
-    }
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:format];
-    return [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:date]];
-}
-
-- (NSString *)timeFormatConvertToTimeStamp:(NSString *)format
-{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:format];
     
-    NSDate *date = [formatter dateFromString:self];
-    if (date == nil) {
-        NSLog(@"convert to timeStamp fail");
-        return self;
-    }
-    return [NSString stringWithFormat:@"%f", [date timeIntervalSince1970]];
+    return source;
 }
 
 - (NSString *)separateByDecimal
@@ -284,6 +224,86 @@
     return [NSString stringWithFormat:@"%@%@",resultString,subffixString];
 }
 
++ (NSString *)generateUDID
+{
+    CFUUIDRef newUniqueId = CFUUIDCreate(NULL);
+    CFStringRef newUniqueIdString = CFUUIDCreateString(NULL, newUniqueId);
+    
+    NSString *MyString = [NSString  stringWithString:(__bridge NSString *)newUniqueIdString];
+    
+    CFRelease(newUniqueId);
+    CFRelease(newUniqueIdString);
+    
+    return [MyString stringByReplacingOccurrencesOfString:@"-" withString:@""];
+}
+
++ (NSString *)timeStampConvertTime:(NSString *)timeStamp
+{
+    NSTimeInterval time = [timeStamp doubleValue];
+    NSDate *detaildate=[NSDate dateWithTimeIntervalSince1970:time];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    return [NSString stringWithFormat:@"%@",[dateFormatter stringFromDate: detaildate]];
+}
+
++ (NSString *)currentTimeConvertTimeStamp
+{
+    return  [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]];
+}
+
++ (NSString *)timeConvertTimeStamp:(NSString *)time
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate* date = [dateFormatter dateFromString:time];
+    if (date == nil) {
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+        date = [dateFormatter dateFromString:time];
+    }
+    if (date == nil) {
+        return time;
+    }
+    return  [NSString stringWithFormat:@"%f",[date timeIntervalSince1970]];
+}
+
++ (NSString *)stringWithDate:(NSDate *)date dateFormat:(NSString *)dateFormat
+{
+    if (date == nil || dateFormat == nil) {
+        return nil;
+    }
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:dateFormat];
+    NSString *strDate = [dateFormatter stringFromDate:date];
+    
+    return strDate;
+}
+
+- (NSString *)timeStampConvertToTimeFormat:(NSString *)format
+{
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[self doubleValue]];
+    if (date == nil) {
+        NSLog(@"convert to format fail");
+        return self;
+    }
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:format];
+    return [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:date]];
+}
+
+- (NSString *)timeFormatConvertToTimeStamp:(NSString *)format
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:format];
+    
+    NSDate *date = [formatter dateFromString:self];
+    if (date == nil) {
+        NSLog(@"convert to timeStamp fail");
+        return self;
+    }
+    return [NSString stringWithFormat:@"%f", [date timeIntervalSince1970]];
+}
+
 + (NSString *)md5:(NSString *)str
 {
     const char *original_str = [str UTF8String];
@@ -309,7 +329,6 @@
     
     return [hash lowercaseString];
 }
-
 
 #define     LocalStr_None           @""
 static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
@@ -444,47 +463,6 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
     return [NSData dataWithBytesNoCopy:bytes length:length];
 }
 
-+ (NSString *)generateUDID
-{
-    CFUUIDRef newUniqueId = CFUUIDCreate(NULL);
-    CFStringRef newUniqueIdString = CFUUIDCreateString(NULL, newUniqueId);
-    
-    NSString *MyString = [NSString  stringWithString:(__bridge NSString *)newUniqueIdString];
-    
-    CFRelease(newUniqueId);
-    CFRelease(newUniqueIdString);
-    
-    return [MyString stringByReplacingOccurrencesOfString:@"-" withString:@""];
-}
-
-+ (NSString *)trimString:(NSString *)string
-{
-    string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    return string;
-}
-
-+ (id)checkNull:(id)source{
-    NSString *result = @"";
-    if(!source || source == nil || [source isEqual:[NSNull null]]){
-        // NSParameterAssert(0);
-        return result;
-    }
-    return source;
-}
-
-+ (NSString *)stringWithDate:(NSDate *)date dateFormat:(NSString *)dateFormat
-{
-    if (date == nil || dateFormat == nil) {
-        return nil;
-    }
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:dateFormat];
-    NSString *strDate = [dateFormatter stringFromDate:date];
-    
-    return strDate;
-}
-
 - (NSString *)stringURLEncoding
 {
     return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
@@ -492,6 +470,28 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
                                                                                  NULL,
                                                                                  CFSTR("!*'();:&=+$,/?%#[]"),
                                                                                  kCFStringEncodingUTF8));
+}
+
++ (UIColor*)colorWithHexString:(NSString*)hexString andAlpha:(float)alpha {
+    UIColor *col;
+    hexString = [hexString stringByReplacingOccurrencesOfString:@"#"
+                                                     withString:@"0x"];
+    uint hexValue;
+    if ([[NSScanner scannerWithString:hexString] scanHexInt:&hexValue]) {
+        col = [[self class] colorWithHexValue:hexValue andAlpha:alpha];
+    } else {
+        // invalid hex string
+        col = [UIColor blackColor];
+    }
+    return col;
+}
+
++ (UIColor*)colorWithHexValue:(uint)hexValue andAlpha:(float)alpha {
+    return [UIColor
+            colorWithRed:((float)((hexValue & 0xFF0000) >> 16))/255.0
+            green:((float)((hexValue & 0xFF00) >> 8))/255.0
+            blue:((float)(hexValue & 0xFF))/255.0
+            alpha:alpha];
 }
 
 - (CGFloat)widthWithFont:(UIFont *)font
@@ -537,14 +537,14 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 
 - (CGSize)textSizeWithFont:(UIFont *)font
 {
-    return [self textSizeWithFont:font constrainedToSize:CGSizeZero];
+    return [self textSizeWithFont:font constrainedToSize:CGSizeMake(0, 0)];
 }
 
 - (CGSize)textSizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size
 {
     CGSize textSize;
     if (!IS_IOS7) {
-        if (CGSizeEqualToSize(size, CGSizeZero)) {
+        if (CGSizeEqualToSize(size, CGSizeMake(0, 0))) {
             textSize = [self sizeWithFont:font];
         } else {
             textSize = [self sizeWithFont:font
@@ -552,7 +552,7 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
                             lineBreakMode:NSLineBreakByCharWrapping];
         }
     } else {
-        if (CGSizeEqualToSize(size, CGSizeZero)) {
+        if (CGSizeEqualToSize(size, CGSizeMake(0, 0))) {
             //            NSDictionary *attributes = @{NSFontAttributeName:font}
             NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
             textSize = [self sizeWithAttributes:attributes];
